@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { BiHide, BiShow } from "react-icons/bi";
 type Props = {};
 
-function Password({}: Props) {
+function ForgetPassword({}: Props) {
   const {
     register,
     setValue,
@@ -229,4 +229,4 @@ function Password({}: Props) {
   );
 }
 
-export default Password;
+export default ForgetPassword;
