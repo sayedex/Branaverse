@@ -5,14 +5,18 @@ import type { AppProps } from 'next/app'
 import store from '../store/store'
 import { Provider } from 'react-redux';
 import Layout from "../Layout/layout"
-import toast, { Toaster } from 'react-hot-toast';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 export default function App({ Component, pageProps }: AppProps) {
+  const {pathname} = useRouter();
+
+  
   return   (
     <ThemeProvider attribute="class">
-      <Toaster/>
+        <ToastContainer />
     <Provider store={store}>
-    <Layout>
+    <Layout pathname={pathname}>
 
     <Component {...pageProps} />
 
@@ -25,4 +29,3 @@ export default function App({ Component, pageProps }: AppProps) {
  )
 }
 
-//? Project output path: /home/sayedex/Desktop/ALL FOLDER/Sayedweb/sayedexdevs/sanity
