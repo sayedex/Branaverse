@@ -147,7 +147,7 @@ const Login = () => {
               <div className="flex flex-row items-center gap-2">
                 <input type="checkbox" /> Remember me
               </div>
-              <Link href="/forgetpass">Forgot password</Link>
+              <Link href="/forgetpassword">Forgot password</Link>
             </div>
 
             <button onClick={() => HandleSender()} className="next_submit_btn">

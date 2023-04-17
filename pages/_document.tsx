@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <title>hello world </title>
+      <title>Branverse - Web3 Freelancer Platform </title>
 
       <body>
         <Main />

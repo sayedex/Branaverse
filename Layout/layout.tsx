@@ -5,6 +5,8 @@ import { Header } from "../components/Header/Header";
 import { userMe } from "../Reduxhelper/usercall";
 import { useRouter } from "next/router";
 import { Dashboardheader } from "../components/Header/Dashboardheader";
+import {getSkill} from "../Reduxhelper/siteinfo"
+
 const Layout = (props: any) => {
   const { active, user, isauthenticateuser } = useAppSelector(
     (state) => state.userSlice
@@ -23,6 +25,7 @@ const Layout = (props: any) => {
   console.log(hideHeader);
 
   useEffect(() => {
+    dispath(getSkill())
     if (isauthenticateuser) {
       router.push("/me");
     }

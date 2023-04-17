@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './userSlice';
+import Siteinfo from "./Siteinfo"
 const store = configureStore({
     reducer: {
         userSlice: userSlice,
+        siteinfo:Siteinfo
 
     },
 });

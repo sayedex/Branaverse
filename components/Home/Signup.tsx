@@ -7,7 +7,7 @@ export const Signup = (countuser:any) => {
     <div className='grid grid-cols-2 grid-row-2 gap-5'>
 
   {/* freelancer btn    */}
-  <Link className='w-full hover:bg-cyan-700 text-center text-white h-[45px] px-8 text-2xl py-2 rounded-3xl bg-cyan-800' href="signup/freeelancer">
+  <Link className='w-full hover:bg-[#140336] bg-[#10046D] text-center text-white h-[45px] px-8 text-2xl py-2 rounded-3xl ' href="signup/freeelancer">
 
 Freelance
 
@@ -15,7 +15,7 @@ Freelance
   {/* freelancer btn    */}
 
   {/* clint btn */}
-  <Link className='w-full hover:bg-cyan-700 text-center text-white h-[45px] px-8 text-2xl py-2 rounded-3xl bg-cyan-800' href="/signup/buyer">
+  <Link className='w-full v text-center text-white h-[45px] px-8 text-2xl py-2 rounded-3xl hover:bg-[#140336] bg-[#10046D]' href="/signup/buyer">
 Client
 
 </Link>

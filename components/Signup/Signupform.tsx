@@ -11,6 +11,7 @@ import newRequest from "../../utils/Axiosapi";
 import { Switchbtn } from "./Switchbtn";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { isValidEmail,checkPasswordStrength } from "../../hooks/validemail";
 type Props = {
   query: any;
 };
@@ -33,6 +34,16 @@ export const Signupform = ({ query }: Props) => {
   const [company, setcompany] = useState(false);
   // to check 1st all input valid or not..
   const { firstName, lastName, email, username, password, birthday } = watch();
+
+ useEffect(()=>{
+if(password){
+  console.log(  checkPasswordStrength(password));
+  console.log(password !="");
+  
+}
+
+ },[password])
+
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
@@ -57,11 +68,15 @@ export const Signupform = ({ query }: Props) => {
 
   const HandleSender = () => {
     if (formIndex == 0) {
-      if (firstName && lastName && email && username && password && birthday) {
+  
+      if (firstName && lastName && isValidEmail(email) && username && password && birthday) {
+        if(!checkPasswordStrength(password)) return toast.info("Your password is weak, please choose a stronger password",{
+          position: "bottom-right",
+        })
         setformIndex(1);
       } else {
         //we will push toast...
-        toast.info(`Fill all input`, {
+        toast.info(`Fill all input correctly `, {
           position: "bottom-right",
         });
       }
@@ -110,6 +125,8 @@ export const Signupform = ({ query }: Props) => {
     setValue("company", company);
     setValue("country", country.name);
     setValue("profession", "");
+    setValue('nofemployees', "");
+    setValue('nofregistration', "");
     setValue("rusername", query?.referralCode ? query?.referralCode : "");
   }, []);
 
@@ -178,7 +195,7 @@ export const Signupform = ({ query }: Props) => {
                 type={`${visiable ? "text" : "password"}`}
                 id="lebel"
                 className="input"
-                defaultValue=""
+                // defaultValue=""
                 placeholder="Create a password"
                 required
               />
@@ -194,6 +211,7 @@ export const Signupform = ({ query }: Props) => {
                 />
               )}
             </div>
+            <p className={`${checkPasswordStrength(password)?"text-green-500":"text-red-500"} p-2`}>{password ==="" ?"":checkPasswordStrength(password)?"":"Your password is weak, please choose a stronger password"}</p>
           </div>
           <div className="mb-6">
             <label className="lebel">Birthday</label>
@@ -213,7 +231,7 @@ export const Signupform = ({ query }: Props) => {
               showTimeInput
               scrollableMonthYearDropdown
               showTwoColumnMonthYearPicker
-              placeholderText="Enter end time"
+              placeholderText="Enter your Birthday"
             />
           </div>
         </div>
@@ -288,6 +306,7 @@ export const Signupform = ({ query }: Props) => {
           {/*  here is the skill */}
           {!company && (
             <Skill
+              userType={query.id}
               selectedSkills={skill}
               handleSkillChange={handleSkillChange}
             />

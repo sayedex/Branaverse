@@ -8,8 +8,7 @@ export const Loginstaticcomponent = () => {
 
 <div className='p-5 max-w-[550px] font-sans'>
 <h1 className='text-4xl font-bold text-white  leading-normal	'>
-Start your freelacing journey useing our BRANAVERSE
-platform
+Start your Freelacing Business Using Our BRANAVERSE Platform
 
 </h1>
 <p className='text-white leading-normal py-4'>Web3 freelancing with crypto payments. Join the decentralized workforce today.</p>
