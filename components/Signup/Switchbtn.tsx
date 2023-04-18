@@ -13,7 +13,7 @@ export function Switchbtn({ enabled, handleChange }: Props) {
       <Switch
         checked={enabled}
         onChange={handleChange}
-        className={`${enabled ? "bg-teal-900" : "bg-teal-700"}
+          className={`${enabled ? "bg-[#10046D]" : "bg-[#10046D]"}
           relative inline-flex h-[20px] w-[40px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
       >
         <span className="sr-only">Use setting</span>

@@ -16,7 +16,7 @@ export const Header = () => {
 
         <div>
             {" "}
-            <Link className="hover:bg-cyan-700 bg-cyan-800 text-white px-10 py-2 rounded-3xl text-xl" href="/login">Log in</Link>
+            <Link className=" bg-white text-[#24006e] px-10 py-2 rounded-3xl text-xl" href="/login">Log in</Link>
     
         </div>
         {/* login button */}

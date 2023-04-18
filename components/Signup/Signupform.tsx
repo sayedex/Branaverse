@@ -69,7 +69,10 @@ if(password){
   const HandleSender = () => {
     if (formIndex == 0) {
   
-      if (firstName && lastName && isValidEmail(email) && username && password && birthday) {
+      if (firstName && lastName && email && username && password && birthday) {
+        if(!isValidEmail(email)) return toast.info("Enter your valid email",{
+          position: "bottom-right",
+        })
         if(!checkPasswordStrength(password)) return toast.info("Your password is weak, please choose a stronger password",{
           position: "bottom-right",
         })
