@@ -22,7 +22,6 @@ const Layout = (props: any) => {
   const path = props.pathname;
   // const isAccountPage = path === '/me';
   const hideHeader = path.startsWith("/me");
-  console.log(hideHeader);
 
   useEffect(() => {
     dispath(getSkill())

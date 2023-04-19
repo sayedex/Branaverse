@@ -21,14 +21,16 @@
 		@apply  flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900  p-2 rounded-md  cursor-pointer hover:shadow-lg m-auto
 	 }
 	 .sidebaricon {
-		@apply text-2xl text-gray-600 group-hover:text-white
+		@apply text-2xl text-[#24006e] group-hover:text-white hover:text-white
 	 }
 	 .sidebartext {
-		@apply text-base text-gray-800 group-hover:text-white font-semibold 
+		@apply text-base text-[#24006e] group-hover:text-white font-semibold 
 	 }
 	 .bgcolor {
 		@apply bg-gradient-to-b from-purple-100 to-blue-100
 	 }
+	 .globalTextcolor{
+		@apply text-[#24006e]}
     
 }
 

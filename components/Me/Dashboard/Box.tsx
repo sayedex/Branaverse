@@ -8,7 +8,7 @@ type Props = {
 
 export function Box({name,value,symbol}: Props) {
   return (
-    <div className="bg-slate-700 min-w-[300px] text-white px-5 py-10 rounded-xl flex flex-col gap-y-5">
+    <div className="bg-[#10046D] min-w-[300px] text-white px-5 py-10 rounded-xl flex flex-col gap-y-5">
       {/* icon and text */}
       <div>
         <p className="text-lg">{name}</p>

@@ -11,7 +11,7 @@ import newRequest from "../../utils/Axiosapi";
 import { Switchbtn } from "./Switchbtn";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
-import { isValidEmail,checkPasswordStrength } from "../../hooks/validemail";
+import { isValidEmail, checkPasswordStrength } from "../../hooks/validemail";
 type Props = {
   query: any;
 };
@@ -35,19 +35,12 @@ export const Signupform = ({ query }: Props) => {
   // to check 1st all input valid or not..
   const { firstName, lastName, email, username, password, birthday } = watch();
 
- useEffect(()=>{
-if(password){
-  console.log(  checkPasswordStrength(password));
-  console.log(password !="");
-  
-}
-
- },[password])
-
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setSubmitloading(true);
+    console.log(data);
+
     try {
       const response = await newRequest.post("/auth/register", data);
       toast.success("Account created", {
@@ -68,14 +61,18 @@ if(password){
 
   const HandleSender = () => {
     if (formIndex == 0) {
-  
       if (firstName && lastName && email && username && password && birthday) {
-        if(!isValidEmail(email)) return toast.info("Enter your valid email",{
-          position: "bottom-right",
-        })
-        if(!checkPasswordStrength(password)) return toast.info("Your password is weak, please choose a stronger password",{
-          position: "bottom-right",
-        })
+        if (!isValidEmail(email))
+          return toast.info("Enter your valid email", {
+            position: "bottom-right",
+          });
+        if (!checkPasswordStrength(password))
+          return toast.info(
+            "Your password is weak, please choose a stronger password",
+            {
+              position: "bottom-right",
+            }
+          );
         setformIndex(1);
       } else {
         //we will push toast...
@@ -116,21 +113,29 @@ if(password){
   useEffect(() => {
     setValue("skills", skill);
   }, [skill]);
+
+
   useEffect(() => {
-    if (query.id === "freelancer") {
-      setValue("userType", "freelancer");
-    } else {
-      setValue("userType", "buyer");
+    if (query.userType) {
+      if (query.userType === "freelancer") {
+        setValue("userType", "freelancer");
+      } else {
+        setValue("userType", "buyer");
+      }
     }
-  }, []);
+
+    if (query.referralCode) {
+      setValue("rusername", query.referralCode);
+      console.log(query.referralCode);
+    }
+  }, [query.query]);
 
   useEffect(() => {
     setValue("company", company);
     setValue("country", country.name);
     setValue("profession", "");
-    setValue('nofemployees', "");
-    setValue('nofregistration', "");
-    setValue("rusername", query?.referralCode ? query?.referralCode : "");
+    setValue("nofemployees", "");
+    setValue("nofregistration", "");
   }, []);
 
   return (
@@ -214,7 +219,19 @@ if(password){
                 />
               )}
             </div>
-            <p className={`${checkPasswordStrength(password)?"text-green-500":"text-red-500"} p-2`}>{password ==="" ?"":checkPasswordStrength(password)?"":"Your password is weak, please choose a stronger password"}</p>
+            <p
+              className={`${
+                checkPasswordStrength(password)
+                  ? "text-green-500"
+                  : "text-red-500"
+              } p-2`}
+            >
+              {password === ""
+                ? ""
+                : checkPasswordStrength(password)
+                ? ""
+                : "Your password is weak, please choose a stronger password"}
+            </p>
           </div>
           <div className="mb-6">
             <label className="lebel">Birthday</label>
@@ -263,7 +280,7 @@ if(password){
               name="profession"
             />
           </div>
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <label className="lebel">Reffer</label>
             <input
               {...register("rusername", { required: false })}
@@ -274,7 +291,7 @@ if(password){
               placeholder="optional"
               required
             />
-          </div>
+          </div> */}
 
           {company && (
             <div className="mb-6">

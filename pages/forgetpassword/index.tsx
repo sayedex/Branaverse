@@ -68,6 +68,8 @@ function ForgetPassword({}: Props) {
        });
        setStage(1);
     } catch (err: any) {
+      console.log(err);
+      
        toast.error(`${err?.response.data}`, {
       position: "bottom-right",
         });

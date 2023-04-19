@@ -166,7 +166,7 @@ const Login = () => {
 
               <h3 className="py-2">{`Didn't recive code?`} <span onClick={()=>HandleSender()} className='cursor-pointer font-medium'>Request again</span></h3>
               <input
-                {...register("otp", { required: true, maxLength: 80 })}
+                {...register("otp", { required: false, maxLength: 80 })}
                 type="text"
                 id="OTP"
                 className="input"
@@ -185,7 +185,7 @@ const Login = () => {
         <div className="py-5">
           <p className="text-center">
             {`Don't have an account?`}{" "}
-            <Link className="text-[#1d2551] font-normal" href="/signup/freeelancer">
+            <Link className="text-[#1d2551] font-normal" href="/">
               Register Here
             </Link>{" "}
           </p>
